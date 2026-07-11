@@ -1,0 +1,1 @@
+# seydikemer-emlak-admin
