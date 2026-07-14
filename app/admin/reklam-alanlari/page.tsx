@@ -1,0 +1,2 @@
+import AdminShell from "@/components/AdminShell";
+export default function Page(){return <AdminShell><header className="admin-topbar"><div><p className="admin-eyebrow">V3 YAYIN SÜRÜMÜ</p><h1>Reklam alanlari</h1><p>Bu modül yayın sonrası geliştirme sırasındadır.</p></div><span className="admin-status">Hazırlanıyor</span></header><section className="admin-panel"><h2>Temel sayfa hazır</h2><p>Menü bağlantısı çalışıyor. Veri ekleme ve düzenleme ekranı bir sonraki sprintte bağlanacak.</p></section></AdminShell>}
