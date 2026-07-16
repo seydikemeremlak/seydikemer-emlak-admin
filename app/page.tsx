@@ -3,8 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
 
 type Neighborhood = {
   id: number;
@@ -59,7 +57,7 @@ export default function HomePage() {
 
   return (
     <main>
-      <SiteHeader />
+    
 
       <section className="hero">
         <div className="heroContent">
@@ -128,7 +126,7 @@ export default function HomePage() {
         )}
       </section>
 
-      <SiteFooter />
+      
 
       <style jsx>{`
         main{min-height:100vh;background:#f5f7fa;color:#0b1b38}
