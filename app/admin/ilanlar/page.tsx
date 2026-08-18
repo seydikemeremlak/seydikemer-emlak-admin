@@ -20,11 +20,13 @@ export default function Page() {
   async function loadListings() {
     setLoading(true);
 
-    const { data, error } = await supabase
-      .from("listings")
-      .select("*")
-      .order("sort_order", { ascending: true })
-      .order("id", { ascending: true });
+    const client = supabase();
+
+const { data, error } = await client
+  .from("listings")
+  .select("*")
+  .order("sort_order", { ascending: true })
+  .order("id", { ascending: true });
 
     if (error) {
       console.error("İlanlar yüklenemedi:", error);
