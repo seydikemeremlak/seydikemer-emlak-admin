@@ -14,6 +14,7 @@ export default function SiteHeader() {
       <nav className="site-nav" aria-label="Ana menü">
         <Link href="/">Ana Sayfa</Link>
         <Link href="/#mahalleler">Mahalleler</Link>
+        <Link href="/#ilanlar">İlanlar</Link>
         <Link href="/admin">Yönetim</Link>
       </nav>
     </header>
