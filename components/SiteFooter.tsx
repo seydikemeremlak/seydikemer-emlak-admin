@@ -1,21 +1,68 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
+import { emptySettings, type SettingsRow } from "@/lib/settings";
+
+function normalizeTurkeyPhone(value: string) {
+  const digits = value.replace(/\D/g, "");
+
+  if (digits.startsWith("90")) {
+    return digits;
+  }
+
+  if (digits.startsWith("0")) {
+    return `90${digits.slice(1)}`;
+  }
+
+  return `90${digits}`;
+}
 
 export default function SiteFooter() {
+  const [settings, setSettings] = useState<SettingsRow>(emptySettings);
+
+  useEffect(() => {
+    async function loadSettings() {
+      const client = supabase();
+
+      const { data, error } = await client
+        .from("settings")
+        .select("*")
+        .eq("id", 1)
+        .single();
+
+      if (!error && data) {
+        setSettings(data);
+      }
+    }
+
+    loadSettings();
+  }, []);
+
+  const phoneRaw = settings.phone || "";
+  const whatsappRaw = settings.whatsapp || settings.phone || "";
+
+  const phoneLink = phoneRaw ? normalizeTurkeyPhone(phoneRaw) : "";
+  const whatsappLink = whatsappRaw
+    ? normalizeTurkeyPhone(whatsappRaw)
+    : "";
+
   return (
     <footer className="site-footer">
       <div className="footer-container">
         <div className="footer-column">
           <img
             src="/logo.png"
-            alt="Seydikemer Emlak"
+            alt={settings.company_name || "Seydikemer Emlak"}
             className="footer-logo"
           />
 
-          <h3>Seydikemer Emlak</h3>
+          <h3>{settings.company_name || "Seydikemer Emlak"}</h3>
 
           <p>
-            Seydikemer ve çevresinde emlak, yatırım fırsatları ve mahalle
-            rehberi.
+            {settings.company_slogan ||
+              "Seydikemer ve çevresinde emlak, yatırım fırsatları ve mahalle rehberi."}
           </p>
         </div>
 
@@ -32,23 +79,61 @@ export default function SiteFooter() {
         <div className="footer-column">
           <h4>İletişim</h4>
 
-          <a href="tel:+905375450400">📞 0537 545 04 00</a>
+          {phoneRaw && (
+            <a href={`tel:+${phoneLink}`}>
+              📞 {phoneRaw}
+            </a>
+          )}
 
-          <a
-            href="https://wa.me/905375450400"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            💬 WhatsApp
-          </a>
+          {whatsappRaw && (
+            <a
+              href={`https://wa.me/${whatsappLink}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              💬 WhatsApp
+            </a>
+          )}
 
-          <p>
-            📍 Gerişburnu Mahallesi
-            <br />
-            68. Cadde No: 3/1
-            <br />
-            Seydikemer / Muğla
-          </p>
+          {settings.email && (
+            <a href={`mailto:${settings.email}`}>
+              ✉️ {settings.email}
+            </a>
+          )}
+
+          {settings.address && (
+            <p>📍 {settings.address}</p>
+          )}
+
+          {settings.instagram && (
+            <a
+              href={settings.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+          )}
+
+          {settings.facebook && (
+            <a
+              href={settings.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Facebook
+            </a>
+          )}
+
+          {settings.youtube && (
+            <a
+              href={settings.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              YouTube
+            </a>
+          )}
 
           <a
             href="https://seydikemeremlak.com.tr"
@@ -61,7 +146,8 @@ export default function SiteFooter() {
       </div>
 
       <div className="footer-bottom">
-        © {new Date().getFullYear()} Seydikemer Emlak
+        © {new Date().getFullYear()}{" "}
+        {settings.company_name || "Seydikemer Emlak"}
         <br />
         Tüm hakları saklıdır.
       </div>
