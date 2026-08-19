@@ -224,11 +224,11 @@ async function loadListings() {
         .searchBox span{font-size:26px}
         .searchBox input{width:100%;min-height:62px;border:0;outline:0;background:transparent;color:#0b1b38;font-size:17px}
         .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}
-        .card{overflow:hidden;border:1px solid #dfe5ed;border-radius:20px;background:white;color:inherit;text-decoration:none;box-shadow:0 16px 45px rgba(20,40,70,.06);transition:transform .2s ease,box-shadow .2s ease}
+        .card{overflow:hidden;border:1px solid #dfe5ed;border-radius:20px;background:white;color:inherit;text-decoration:none;box-shadow:0 16px 45px rgba(20,40,70,.06);transition:transform .2s ease,box-shadow:0 22px 55px rgba(20,40,70,.12);align-self:start}
         .card:hover{transform:translateY(-5px);box-shadow:0 22px 55px rgba(20,40,70,.12)}
         .cardImage{min-height:220px;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(180deg,rgba(7,18,38,.05),rgba(7,18,38,.78)),linear-gradient(125deg,#17365f,#3b7b78);background-size:cover;background-position:center}
         .cardImage span{color:white;font-size:11px;font-weight:900;letter-spacing:2px}
-        .cardBody{padding:24px}
+        .cardBody{padding:18px 24px 20px}
         .cardBody h3{margin:0;font-size:26px}
         .cardBody p{min-height:78px;color:#718096;line-height:1.65}
         .cardBody strong{color:#f47b20}
