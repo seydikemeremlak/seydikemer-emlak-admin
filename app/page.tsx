@@ -228,7 +228,7 @@ async function loadListings() {
         .card:hover{transform:translateY(-5px);box-shadow:0 22px 55px rgba(20,40,70,.12)}
         .cardImage{min-height:220px;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(180deg,rgba(7,18,38,.05),rgba(7,18,38,.78)),linear-gradient(125deg,#17365f,#3b7b78);background-size:cover;background-position:center}
         .cardImage span{color:white;font-size:11px;font-weight:900;letter-spacing:2px}
-        .cardBody{padding:18px 24px 20px}
+        .cardBody{padding:14px 24px 10px}
         .cardBody h3{margin:0;font-size:26px}
         .cardBody p{min-height:78px;color:#718096;line-height:1.65}
         .cardBody strong{color:#f47b20}
