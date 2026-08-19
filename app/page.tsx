@@ -198,6 +198,12 @@ async function loadListings() {
         .brand strong,.brand span,.footerBrand strong,.footerBrand span{display:block}
         .brand strong{font-size:20px}
         .brand span,.footerBrand span{margin-top:3px;color:#8793a6;font-size:13px}
+        .cardImg{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  display:block;
+}
         nav{display:flex;align-items:center;gap:24px}
         nav a{color:#0b1b38;text-decoration:none;font-weight:800}
         .hero{min-height:620px;display:flex;align-items:center;padding:70px clamp(20px,8vw,130px);color:white;background:radial-gradient(circle at 85% 30%,rgba(244,123,32,.38),transparent 24%),linear-gradient(125deg,#071226,#17365f 70%,#245f65)}
