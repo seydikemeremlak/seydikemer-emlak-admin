@@ -81,7 +81,7 @@ export default function SiteFooter() {
 
           {phoneRaw && (
             <a href={`tel:+${phoneLink}`}>
-              📞 {phoneRaw}
+              📞 {phoneRaw.replace(/^0?(\d{3})(\d{3})(\d{2})(\d{2})$/, "0$1 $2 $3 $4")}
             </a>
           )}
 
