@@ -18,10 +18,30 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [search, setSearch] = useState("");
+  const [listings, setListings] = useState<any[]>([]);
 
   useEffect(() => {
-    void loadNeighborhoods();
-  }, []);
+  void loadNeighborhoods();
+  void loadListings();
+}, []);
+async function loadListings() {
+  const client = supabase();
+
+  const { data, error } = await client
+    .from("listings")
+    .select("*")
+    .eq("active", true)
+    .order("sort_order", { ascending: true })
+    .order("id", { ascending: true });
+
+  if (error) {
+    console.error("İlanlar yüklenemedi:", error);
+    setListings([]);
+    return;
+  }
+
+  setListings(data ?? []);
+}
 
   async function loadNeighborhoods() {
     setLoading(true);
@@ -76,6 +96,48 @@ export default function HomePage() {
         </div>
       </section>
 
+{listings.length > 0 && (
+  <section className="neighborhoodSection" id="ilanlar">
+    <div className="sectionHeader">
+      <div>
+        <p className="eyebrow">GÜNCEL İLANLAR</p>
+        <h2>Öne Çıkan İlanlar</h2>
+        <p>Güncel satılık ve kiralık fırsatları inceleyin.</p>
+      </div>
+
+      <span className="count">{listings.length} İlan</span>
+    </div>
+
+    <div className="grid">
+      {listings.map((item) => (
+        <article className="card" key={item.id}>
+          {item.image_url && (
+            <img
+              className="cardImg"
+              src={item.image_url}
+              alt={item.title || "Seydikemer Emlak İlanı"}
+            />
+          )}
+
+          <div className="cardBody">
+            <h3>{item.title}</h3>
+
+            {item.external_url && (
+              <a
+                href={item.external_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="primaryButton"
+              >
+                İlanı İncele
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
       <section className="neighborhoodSection" id="mahalleler">
         <div className="sectionHeader">
           <div>
