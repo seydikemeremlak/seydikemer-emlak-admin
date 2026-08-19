@@ -17,6 +17,13 @@ export default function Page() {
   const [items, setItems] = useState<Listing[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const [showForm, setShowForm] = useState(false);
+const [title, setTitle] = useState("");
+const [imageUrl, setImageUrl] = useState("");
+const [externalUrl, setExternalUrl] = useState("");
+const [active, setActive] = useState(true);
+const [saving, setSaving] = useState(false);
+
   async function loadListings() {
     setLoading(true);
 
@@ -37,7 +44,41 @@ const { data, error } = await client
 
     setLoading(false);
   }
+async function addListing() {
+  if (!title.trim()) {
+    alert("İlan başlığı boş olamaz.");
+    return;
+  }
 
+  setSaving(true);
+
+  const client = supabase();
+
+  const { error } = await client
+    .from("listings")
+    .insert({
+      title: title.trim(),
+      image_url: imageUrl.trim() || null,
+      external_url: externalUrl.trim() || null,
+      active,
+    });
+
+  setSaving(false);
+
+  if (error) {
+    console.error("İlan eklenemedi:", error);
+    alert("İlan eklenirken hata oluştu.");
+    return;
+  }
+
+  setTitle("");
+  setImageUrl("");
+  setExternalUrl("");
+  setActive(true);
+  setShowForm(false);
+
+  await loadListings();
+}
   useEffect(() => {
     loadListings();
   }, []);
@@ -55,10 +96,58 @@ const { data, error } = await client
       <section className="admin-panel">
         <div className="head">
           <h2>Kayıtlı İlanlar</h2>
+         <button type="button" onClick={() => setShowForm(true)}>
+  + Yeni İlan Ekle
+</button>
           <button type="button" onClick={loadListings}>
             Yenile
           </button>
         </div>
+        {showForm && (
+  <div className="listing-form">
+    <h3>Yeni İlan Ekle</h3>
+
+    <input
+      type="text"
+      placeholder="İlan başlığı"
+      value={title}
+      onChange={(e) => setTitle(e.target.value)}
+    />
+
+    <input
+      type="text"
+      placeholder="Görsel URL"
+      value={imageUrl}
+      onChange={(e) => setImageUrl(e.target.value)}
+    />
+
+    <input
+      type="text"
+      placeholder="İlan bağlantısı"
+      value={externalUrl}
+      onChange={(e) => setExternalUrl(e.target.value)}
+    />
+
+    <label>
+      <input
+        type="checkbox"
+        checked={active}
+        onChange={(e) => setActive(e.target.checked)}
+      />
+      Aktif
+    </label>
+
+    <div>
+      <button type="button" onClick={addListing} disabled={saving}>
+        {saving ? "Kaydediliyor..." : "Kaydet"}
+      </button>
+
+      <button type="button" onClick={() => setShowForm(false)}>
+        İptal
+      </button>
+    </div>
+  </div>
+)}
 
         {loading ? (
           <p>İlanlar yükleniyor...</p>
