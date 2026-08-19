@@ -230,7 +230,7 @@ async function loadListings() {
         .cardImage span{color:white;font-size:11px;font-weight:900;letter-spacing:2px}
         .cardBody{padding:14px 24px 10px}
         .cardBody h3{margin:0;font-size:26px}
-        .cardBody p{min-height:78px;color:#718096;line-height:1.65}
+        .cardBody{min-height:0;color:#718096;line-height:1.65}
         .cardBody strong{color:#f47b20}
         .message{padding:26px;border:1px solid #dfe5ed;border-radius:16px;background:white;text-align:center}
         .message.error{color:#b42318}
