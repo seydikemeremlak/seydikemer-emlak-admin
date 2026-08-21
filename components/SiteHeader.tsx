@@ -12,11 +12,12 @@ export default function SiteHeader() {
       </Link>
 
       <nav className="site-nav" aria-label="Ana menü">
-        <Link href="/">Ana Sayfa</Link>
-        <Link href="/#mahalleler">Mahalleler</Link>
-        <Link href="/#ilanlar">İlanlar</Link>
-        <Link href="/admin">Yönetim</Link>
-      </nav>
+  <Link href="/">Ana Sayfa</Link>
+  <Link href="/#mahalleler">Mahalleler</Link>
+  <Link href="/#ilanlar">İlanlar</Link>
+  <Link href="/emlak-terimleri">Emlak Terimleri</Link>
+  <Link href="/admin">Yönetim</Link>
+</nav>
     </header>
   );
 }

@@ -167,3 +167,226 @@ grid-template-columns:1fr;
   opacity: 0.6;
   cursor: not-allowed;
 }
+/* ==================================================
+   EMLAK TERİMLERİ - YÖNETİM PANELİ
+================================================== */
+
+.admin-panel .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.admin-panel .head h2 {
+  margin: 0;
+}
+
+/* Genel buton görünümü */
+.admin-panel button {
+  border: 1px solid #334155;
+  background: #172033;
+  color: #ffffff;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-panel button:hover {
+  background: #24324a;
+  transform: translateY(-1px);
+}
+
+/* Yeni Terim Ekle butonu */
+.admin-panel .head button {
+  background: #f59e0b;
+  border-color: #f59e0b;
+  color: #07101f;
+  padding: 11px 18px;
+  font-weight: 700;
+}
+
+.admin-panel .head button:hover {
+  background: #fbbf24;
+}
+
+/* Form alanları */
+.admin-panel input[type="text"],
+.admin-panel input[type="number"],
+.admin-panel textarea,
+.admin-panel select {
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #cbd5e1;
+  outline: none;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.admin-panel input:focus,
+.admin-panel textarea:focus,
+.admin-panel select:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+/* Checkbox */
+.admin-panel input[type="checkbox"] {
+  accent-color: #f59e0b;
+}
+
+/* Kayıt kartlarındaki başlık */
+.admin-panel h3 {
+  color: #ffffff;
+}
+
+/* Açıklamalar */
+.admin-panel p {
+  line-height: 1.6;
+}
+
+/* Mobil görünüm */
+@media (max-width: 700px) {
+  .admin-panel .head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-panel .head button {
+    width: 100%;
+  }
+}
+/* ==================================================
+   EMLAK TERİMLERİ - ZİYARETÇİ SAYFASI
+================================================== */
+
+.terms-public-page {
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.terms-public-hero {
+  background: linear-gradient(135deg, #07101f, #10223d);
+  color: #fff;
+  padding: 70px 20px;
+}
+
+.terms-public-container {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.terms-public-kicker {
+  color: #ff8a00;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.terms-public-hero h1 {
+  margin: 0 0 16px;
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1;
+}
+
+.terms-public-hero > div > p:last-child {
+  max-width: 760px;
+  color: #b8c4d6;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.terms-public-section {
+  padding: 55px 20px 80px;
+}
+
+.terms-public-tools {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.terms-public-tools input,
+.terms-public-tools select {
+  width: 100%;
+  padding: 15px 17px;
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+  background: #fff;
+  color: #10213b;
+  font-size: 15px;
+  outline: none;
+}
+
+.terms-public-tools input:focus,
+.terms-public-tools select:focus {
+  border-color: #ff8a00;
+  box-shadow: 0 0 0 3px rgba(255, 138, 0, 0.12);
+}
+
+.terms-public-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.terms-public-card {
+  background: #fff;
+  border: 1px solid #e3e8ef;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 35, 65, 0.05);
+}
+
+.terms-public-category {
+  display: inline-block;
+  background: #fff1e3;
+  color: #e66f00;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.terms-public-card h2 {
+  margin: 0 0 12px;
+  color: #10213b;
+  font-size: 23px;
+}
+
+.terms-public-card p {
+  margin: 0;
+  color: #5a6b82;
+  line-height: 1.7;
+}
+
+.terms-public-message {
+  background: #fff;
+  border: 1px solid #e3e8ef;
+  border-radius: 14px;
+  padding: 22px;
+  color: #5a6b82;
+}
+
+@media (max-width: 800px) {
+  .terms-public-tools {
+    grid-template-columns: 1fr;
+  }
+
+  .terms-public-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .terms-public-hero {
+    padding: 50px 20px;
+  }
+}

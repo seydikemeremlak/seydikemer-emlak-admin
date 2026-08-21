@@ -9,11 +9,12 @@ const menuItems = [
   { number: "01", label: "Genel Bakış", href: "/admin/dashboard" },
   { number: "02", label: "Sayfalar", href: "/admin/sayfalar" },
   { number: "03", label: "Mahalleler", href: "/admin/mahalleler" },
-  { number: "04", label: "Emlak Bilgileri", href: "/admin/emlak-bilgileri" },
-  { number: "05", label: "Analizler", href: "/admin/analizler" },
-  { number: "06", label: "Reklam Alanları", href: "/admin/reklam-alanlari" },
-  { number: "07", label: "İlanlar", href: "/admin/ilanlar" },
-  { number: "08", label: "Site Ayarları", href: "/admin/site-ayarlari" },
+    { number: "04", label: "Emlak Bilgileri", href: "/admin/emlak-bilgileri" },
+  { number: "05", label: "Emlak Terimleri", href: "/admin/emlak-terimleri" },
+  { number: "06", label: "Analizler", href: "/admin/analizler" },
+  { number: "07", label: "Reklam Alanları", href: "/admin/reklam-alanlari" },
+  { number: "08", label: "İlanlar", href: "/admin/ilanlar" },
+  { number: "09", label: "Site Ayarları", href: "/admin/site-ayarlari" },
 ];
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {
