@@ -3,6 +3,7 @@ import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://seydikemeremlak.com.tr"),
@@ -45,6 +46,19 @@ export default function RootLayout({
         {children}
         <SiteFooter />
         <Analytics />
+        <Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-BQNHV425S3"
+  strategy="afterInteractive"
+/>
+
+<Script id="google-analytics" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BQNHV425S3');
+  `}
+</Script>
       </body>
     </html>
   );
