@@ -16,6 +16,7 @@ export default function SiteHeader() {
   <Link href="/#mahalleler">Mahalleler</Link>
   <Link href="/#ilanlar">İlanlar</Link>
   <Link href="/emlak-terimleri">Emlak Terimleri</Link>
+  <Link href="/iletisim">İletişim</Link>
   </nav>
     </header>
   );
