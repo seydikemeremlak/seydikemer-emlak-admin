@@ -19,6 +19,7 @@ export default function HomePage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [search, setSearch] = useState("");
   const [listings, setListings] = useState<any[]>([]);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
   void loadNeighborhoods();
@@ -112,12 +113,14 @@ async function loadListings() {
       {listings.map((item) => (
         <article className="card" key={item.id}>
           {item.image_url && (
-            <img
-              className="cardImg"
-              src={item.image_url}
-              alt={item.title || "Seydikemer Emlak İlanı"}
-            />
-          )}
+  <img
+    className="cardImg"
+    src={item.image_url}
+    alt={item.title || "Seydikemer Emlak İlanı"}
+    onClick={() => setSelectedImage(item.image_url)}
+    style={{ cursor: "zoom-in" }}
+  />
+)}
 
           <div className="cardBody">
             <h3>{item.title}</h3>
@@ -240,6 +243,53 @@ async function loadListings() {
         @media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
         @media(max-width:650px){.header{position:static}.brand span{display:none}nav a:first-child{display:none}.hero{min-height:540px}.sectionHeader,footer{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr}}
       `}</style>
+      {selectedImage && (
+  <div
+    onClick={() => setSelectedImage(null)}
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.88)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 9999,
+      padding: "30px",
+      cursor: "zoom-out",
+    }}
+  >
+    <button
+      onClick={() => setSelectedImage(null)}
+      style={{
+        position: "absolute",
+        top: "20px",
+        right: "25px",
+        background: "white",
+        border: "none",
+        borderRadius: "50%",
+        width: "44px",
+        height: "44px",
+        fontSize: "28px",
+        cursor: "pointer",
+      }}
+    >
+      ×
+    </button>
+
+    <img
+      src={selectedImage}
+      alt="İlan görseli"
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        maxWidth: "95vw",
+        maxHeight: "90vh",
+        objectFit: "contain",
+        borderRadius: "12px",
+        cursor: "default",
+      }}
+    />
+  </div>
+)}
     </main>
   );
 }
