@@ -67,25 +67,26 @@ export default function IletisimPage() {
             </div>
 
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Gerişburnu+Mahallesi+68.+Cadde+No+3%2F1+Seydikemer+Muğla"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mapButton"
-            >
-              Haritalar&apos;da Aç
-            </a>
+  href="https://www.google.com/maps/search/?api=1&query=36.6387145,29.380966972292267"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mapButton"
+>
+  Haritalar&apos;da Aç
+</a>
           </div>
 
           <div className="mapBox">
             <iframe
-              src="https://www.google.com/maps?q=Gerişburnu%20Mahallesi%2068.%20Cadde%20No%203%2F1%20Seydikemer%20Muğla&output=embed"
-              width="100%"
-              height="450"
-              style={{ border: 0 }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Seydikemer Emlak Konum"
-            />
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1600.7438876675071!2d29.380966972292267!3d36.638714500000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c0528537e48785%3A0xb75a3f58f17045e9!2sGeri%C5%9Fburnu%2C%201417.%20Sk.%20no%3A%203%2F1%2C%2048850%20Kemer%2FSeydikemer%2FMu%C4%9Fla!5e0!3m2!1str!2str!4v1787657935586!5m2!1str!2str"
+  width="100%"
+  height="450"
+  style={{ border: 0 }}
+  allowFullScreen
+  loading="lazy"
+  referrerPolicy="strict-origin-when-cross-origin"
+  title="Seydikemer Emlak Konum"
+/>
           </div>
         </div>
       </section>
