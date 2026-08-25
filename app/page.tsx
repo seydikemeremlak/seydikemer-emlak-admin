@@ -90,7 +90,7 @@ async function loadListings() {
 
           <div className="heroButtons">
             <a href="#mahalleler" className="primaryButton">Mahalleleri keşfet</a>
-            <a href="https://wa.me/905322448448" target="_blank" rel="noopener noreferrer" className="secondaryButton">
+            <a href="https://wa.me/9053375450400" target="_blank" rel="noopener noreferrer" className="secondaryButton">
               WhatsApp
             </a>
           </div>
